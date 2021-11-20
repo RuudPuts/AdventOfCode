@@ -1,0 +1,14 @@
+from day import Day
+
+class Day{{ day }}(Day):
+    def title(self):
+        return "{{ title }}"
+
+    def input_parser(self):
+        return Parser()
+
+    def task1(self, input):
+        raise Exception("Task failed")
+
+    def task2(self, input):
+        raise Exception("Task failed")
