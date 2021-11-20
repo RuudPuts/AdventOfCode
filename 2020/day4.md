@@ -42,7 +42,6 @@ According to the above rules, your improved system would report `**2**` valid pa
 Count the number of **valid** passports - those that have all required fields. Treat `cid` as optional. **In your batch file, how many passports are valid?**
 
 Your puzzle answer was `226`.
-<p class="day-success">The first half of this puzzle is complete! It provides one gold star: *
 ## Task 2
 The line is moving more quickly now, but you overhear airport security talking about how passports with invalid data are getting through. Better add some data validation, quick!
 
@@ -101,6 +100,9 @@ iyr:2010 hgt:158cm hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:093154719
 ```
 Count the number of **valid** passports - those that have all required fields **and valid values**. Continue to treat `cid` as optional. **In your batch file, how many passports are valid?**
 
-<form method="post" action="4/answer"><input type="hidden" name="level" value="2"/>
-Answer: <input type="text" name="answer" autocomplete="off"/> <input type="submit" value="[Submit]"/>
-</form>
+Your puzzle answer was `160`.
+<p class="day-success">Both parts of this puzzle are complete! They provide two gold stars: **
+
+At this point, you should <a href="/2020">return to your Advent calendar</a> and try another puzzle.
+
+If you still want to see it, you can <a href="4/input" target="_blank">get your puzzle input</a>.
