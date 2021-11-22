@@ -1,11 +1,12 @@
 from day import Day
+from input_parser.dummy_parser import DummyParser
 
 class Day{{ day }}(Day):
     def title(self):
         return "{{ title }}"
 
     def input_parser(self):
-        return Parser()
+        return DummyParser()
 
     def task1(self, input):
         raise Exception("Task failed")

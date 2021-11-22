@@ -91,6 +91,8 @@ if __name__ == "__main__":
 
     print("")
     print("")
+    if len(sys.argv) > 3 and sys.argv[3] == 'update':
+        exit()
     
     input = fetch_input(year, day)
     write_file(year, "day%s-input.txt" % day, input)
