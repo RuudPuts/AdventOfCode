@@ -41,8 +41,6 @@ Here are some other boarding passes:
 As a sanity check, look through your list of boarding passes. **What is the highest seat ID on a boarding pass?**
 
 Your puzzle answer was `848`.
-<p class="day-success">The first half of this puzzle is complete! It provides one gold star: *
-
 ## Task 2
 **Ding!** The "fasten seat belt" signs have turned on. Time to find your seat.
 
@@ -52,6 +50,9 @@ Your seat wasn't at the very front or back, though; the seats with IDs +1 and -1
 
 **What is the ID of your seat?**
 
-<form method="post" action="5/answer"><input type="hidden" name="level" value="2"/>
-Answer: <input type="text" name="answer" autocomplete="off"/> <input type="submit" value="[Submit]"/>
-</form>
+Your puzzle answer was `682`.
+<p class="day-success">Both parts of this puzzle are complete! They provide two gold stars: **
+
+At this point, you should <a href="/2020">return to your Advent calendar</a> and try another puzzle.
+
+If you still want to see it, you can <a href="5/input" target="_blank">get your puzzle input</a>.

@@ -13,7 +13,8 @@ The boot code is represented as a text file with one **instruction** per line of
  - `nop` stands for **No OPeration** - it does nothing.  The instruction immediately below it is executed next.
 
 For example, consider the following program:
-```nop +0
+```
+nop +0
 acc +1
 jmp +4
 acc +3
@@ -24,7 +25,8 @@ jmp -4
 acc +6
 ```
 These instructions are visited in this order:
-```nop +0  | 1
+```
+nop +0  | 1
 acc +1  | 2, 8(!)
 jmp +4  | 3
 acc +3  | 6
@@ -53,7 +55,8 @@ Somewhere in the program, **either** a `jmp` is supposed to be a `nop`, **or** a
 The program is supposed to terminate by **attempting to execute an instruction immediately after the last instruction in the file**. By changing exactly one `jmp` or `nop`, you can repair the boot code and make it terminate correctly.
 
 For example, consider the same program from above:
-```nop +0
+```
+nop +0
 acc +1
 jmp +4
 acc +3
@@ -66,7 +69,8 @@ acc +6
 If you change the first instruction from `nop +0` to `jmp +0`, it would create a single-instruction infinite loop, never leaving that instruction.  If you change almost any of the `jmp` instructions, the program will still eventually find another `jmp` instruction and loop forever.
 
 However, if you change the second-to-last instruction (from `jmp -4` to `nop -4`), the program terminates! The instructions are visited in this order:
-```nop +0  | 1
+```
+nop +0  | 1
 acc +1  | 2
 jmp +4  | 3
 acc +3  |

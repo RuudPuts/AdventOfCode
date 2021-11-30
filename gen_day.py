@@ -50,7 +50,8 @@ def parse_description(description):
         '</em>': '**',
         '<h2 id="part2">--- Part Two ---</h2>': '\n## Task 2',
         '<h2>---': '#',
-        '---</h2>': '\n\n## Task 1\n'
+        '---</h2>': '\n\n## Task 1\n',
+        '```': '```\n'
     }
 
     for find, replace in replace_actions.items():
