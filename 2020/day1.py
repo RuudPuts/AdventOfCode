@@ -1,5 +1,5 @@
 from day import Day
-from input_parser.convert_to_int_parser import ConvertToIntParser
+from input_parser import ConvertToIntParser
 
 import itertools
 from functools import reduce

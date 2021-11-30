@@ -1,5 +1,5 @@
 from day import Day
-from input_parser.convert_to_list_parser import ConvertToListParser
+from input_parser import ConvertToListParser
 
 from functools import reduce
 

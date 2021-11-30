@@ -1,5 +1,5 @@
 from day import Day
-from input_parser.dummy_parser import DummyParser
+from input_parser import DummyParser
 
 import math
 

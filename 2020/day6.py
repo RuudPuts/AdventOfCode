@@ -1,6 +1,5 @@
-from os import SCHED_OTHER
 from day import Day
-from input_parser.split_blank_line_parser import SplitBlankLineParser
+from input_parser import SplitBlankLineParser
 
 class Day6(Day):
     def title(self):

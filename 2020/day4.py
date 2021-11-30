@@ -1,5 +1,5 @@
 from day import Day
-from input_parser.input_parser import InputParser
+from input_parser import InputParser
 
 import re
 
