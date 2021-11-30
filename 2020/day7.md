@@ -31,8 +31,6 @@ So, in this example, the number of bag colors that can eventually contain at lea
 **How many bag colors can eventually contain at least one `shiny gold` bag?** (The list of rules is quite long; make sure you get all of it.)
 
 Your puzzle answer was `257`.
-<p class="day-success">The first half of this puzzle is complete! It provides one gold star: *
-
 ## Task 2
 It's getting pretty expensive to fly these days - not because of ticket prices, but because of the ridiculous number of bags you need to buy!
 
@@ -60,6 +58,9 @@ In this example, a single `shiny gold` bag must contain `**126**` other bags.
 
 **How many individual bags are required inside your single `shiny gold` bag?**
 
-<form method="post" action="7/answer"><input type="hidden" name="level" value="2"/>
-Answer: <input type="text" name="answer" autocomplete="off"/> <input type="submit" value="[Submit]"/>
-</form>
+Your puzzle answer was `1038`.
+<p class="day-success">Both parts of this puzzle are complete! They provide two gold stars: **
+
+At this point, you should <a href="/2020">return to your Advent calendar</a> and try another puzzle.
+
+If you still want to see it, you can <a href="7/input" target="_blank">get your puzzle input</a>.
