@@ -5,3 +5,4 @@ from .day4 import Day4
 from .day5 import Day5
 from .day6 import Day6
 from .day7 import Day7
+from .day8 import Day8
