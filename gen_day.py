@@ -85,6 +85,7 @@ if __name__ == "__main__":
 
     print("Generating %s day %s" % (year, day))
     print("")
+    os.makedirs(year)
 
     description_raw = fetch_description(year, day)
     title, description = parse_description(description_raw)
