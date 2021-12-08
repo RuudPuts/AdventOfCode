@@ -48,6 +48,8 @@ def parse_description(description):
         '<li>': ' - ',
         '<em>': '**',
         '</em>': '**',
+        '&gt;': '>',
+        '&lt;': '<',
         '<h2 id="part2">--- Part Two ---</h2>': '\n## Task 2',
         '<h2>---': '#',
         '---</h2>': '\n\n## Task 1\n',
