@@ -21,3 +21,11 @@ def windows(list, size):
 
 def generate_grid(width, height, initial_value):
     return [[initial_value for i in range(width)] for i in range(height)] # list(map(lambda y: list(map(lambda x: initial_value, range(0, width))), range(0, height)))
+
+def flatten(list):
+    return [item for sublist in list for item in sublist]
+
+def prod(list):
+    from functools import reduce
+
+    return reduce((lambda x, y: x * y), list)
