@@ -22,7 +22,6 @@ class Day10(Day):
         return median(sorted(completion_scores))
 
 ValidationError = namedtuple('ValidationError', 'idx expected got')
-ValidationResult = namedtuple('ValidationResult', 'valid complete error')
 
 class Chunk:
     TAGS = {
