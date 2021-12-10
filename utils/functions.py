@@ -30,7 +30,7 @@ def prod(list):
 
     return reduce((lambda x, y: x * y), list)
 
-def middle(list):
+def median(list):
     middle = float(len(list))/2
     if middle % 2 != 0:
         return list[int(middle - .5)]

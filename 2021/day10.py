@@ -1,7 +1,7 @@
 from day import Day
 from input_parser import InputParser
 from collections import namedtuple
-from utils import middle
+from utils import median
 
 class Day10(Day):
     def title(self):
@@ -19,7 +19,7 @@ class Day10(Day):
         input = list(filter(lambda x: x.valid, input))
         completion_scores = list(map(lambda x: x.completion_score, input))
 
-        return middle(sorted(completion_scores))
+        return median(sorted(completion_scores))
 
 ValidationError = namedtuple('ValidationError', 'idx expected got')
 ValidationResult = namedtuple('ValidationResult', 'valid complete error')
