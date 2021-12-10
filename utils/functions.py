@@ -29,3 +29,10 @@ def prod(list):
     from functools import reduce
 
     return reduce((lambda x, y: x * y), list)
+
+def middle(list):
+    middle = float(len(list))/2
+    if middle % 2 != 0:
+        return list[int(middle - .5)]
+    else:
+        return (list[int(middle)], list[int(middle-1)])

@@ -1,1 +1,1 @@
-from .functions import chunks, windows, generate_grid, flatten, prod
+from .functions import chunks, windows, generate_grid, flatten, prod, middle
