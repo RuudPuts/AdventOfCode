@@ -4,3 +4,4 @@ from .comma_separated_int_parser import CommaSeparatedIntParser
 from .dummy_parser import DummyParser
 from .input_parser import InputParser
 from .split_blank_line_parser import SplitBlankLineParser
+from .int_grid_parser import IntGridParser

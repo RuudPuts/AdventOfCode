@@ -1,1 +1,3 @@
-from .functions import chunks, windows, generate_grid, flatten, prod, median
+from .functions import *
+from .grid import Grid
+from .vector2 import Vector2
