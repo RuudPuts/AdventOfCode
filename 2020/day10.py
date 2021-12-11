@@ -27,7 +27,7 @@ class Day10(Day):
         input.append(max(input) + 3)
 
         count = {0: 1} 
-        for adapter in input[1:]:
-            count[adapter] = count.get(adapter-1, 0) + count.get(adapter-2, 0) + count.get(adapter-3, 0)
+        for i in input[1:]:
+            count[i] = count.get(i - 1, 0) + count.get(i - 2, 0) + count.get(i - 3, 0)
 
         return count[input[-1]]
