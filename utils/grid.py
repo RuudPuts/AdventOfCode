@@ -6,9 +6,6 @@ class Grid:
     def __init__(self, data):
         self.data = data
 
-    # def __init__(self, width, height, initial_value):
-    #     self.data = [[initial_value for i in range(width)] for i in range(height)]
-
     def __iter__(self):
         return iter(self.data)
 
@@ -25,7 +22,6 @@ class Grid:
         return self.width * self.height
 
     def get(self, point):
-        # print("GET %d %d - %s" % (self.width, self.height, point))
         return self.data[point.y][point.x]
 
     def set(self, point, value):
