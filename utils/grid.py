@@ -1,10 +1,13 @@
 from collections import namedtuple
-
+from utils.ocr.ocr import OCR
 from utils.vector2 import Vector2
 
 class Grid:
-    def __init__(self, data):
-        self.data = data
+    def __init__(self, data=[], width=-1, height=-1, initial_value=''):
+        if data:
+            self.data = data
+        else:
+            self.data = [[initial_value for i in range(width)] for i in range(height)]
 
     def __iter__(self):
         return iter(self.data)
@@ -36,6 +39,39 @@ class Grid:
                 point = Vector2(x, y)
                 self.set(point, block(point, self.get(point)))
 
+    def split(self, x=None, y=None):
+        if x is not None and y is not None:
+            raise Exception("Can only split 'x', OR 'y'")
+        if not self.contains(Vector2(x or 0, y or 0)):
+            raise Exception("Split out of bounds")
+
+        if y:
+            return Grid(data=self.data[0:y]), Grid(data=self.data[y + 1:])
+        else:
+            dataA = []
+            dataB = []
+            for row in self.data:
+                dataA.append(row[0:x])
+                dataB.append(row[x + 1:])
+
+            return Grid(data=dataA), Grid(data=dataB)
+
+    def merge(self, other, on_conflict):
+        for y in range(min(self.height, other.height)):
+            for x in range(min(self.width, other.width)):
+                point = Vector2(x, y)
+                value = self.get(point)
+                other_value = other.get(point)
+
+                if value != other_value:
+                    self.set(point, on_conflict(value, other_value))
+
+    def mirror_vertically(self):
+        self.data = list(map(lambda x: list(reversed(x)), self.data))
+
+    def mirror_horizontally(self):
+        self.data = list(reversed(self.data))
+
     def find_by_value(self, block):
         for y in range(self.height):
             for x in range(self.width):
@@ -45,6 +81,10 @@ class Grid:
 
     def neighbours(self, point):
         return [p for p in point.adjacent if self.contains(p)]
+
+    def ocr(self, fill_value):
+        self.map(lambda _, value: value if value == fill_value else ' ')
+        return OCR(self.data).text()
 
     def print(self):
         # From https://stackoverflow.com/a/13214945
