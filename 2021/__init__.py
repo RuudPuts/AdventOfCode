@@ -1,6 +1,7 @@
 from .day1 import Day1
 from .day10 import Day10
 from .day11 import Day11
+from .day12 import Day12
 from .day13 import Day13
 from .day2 import Day2
 from .day3 import Day3
