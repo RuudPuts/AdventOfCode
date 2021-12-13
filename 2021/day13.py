@@ -1,12 +1,7 @@
 from day import Day
 from input_parser import InputParser
-from collections import namedtuple
-from utils import Vector2, OCR
+from utils import Vector2, Grid
 import re
-from PIL import Image
-
-from utils.grid import Grid
-
 class Day13(Day):
     def title(self):
         return "Transparent Origami"
