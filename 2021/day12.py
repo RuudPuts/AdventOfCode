@@ -4,6 +4,7 @@ from input_parser import InputParser
 from utils import flatten
 from collections import defaultdict, deque
 
+
 class Day12(Day):
     def title(self):
         return "Passage Pathing"
@@ -13,7 +14,7 @@ class Day12(Day):
 
     def task1(self, input):
         paths = 0
-        queue = deque([("start", {"start",}),])
+        queue = deque([("start", {"start", }), ])
 
         while queue:
             current, previous = queue.pop()
@@ -21,34 +22,36 @@ class Day12(Day):
                 if next == "end":
                     paths += 1
                 elif next.lower() != next or next not in previous:
-                    queue.append((next, previous | {next,}))
+                    queue.append((next, previous | {next, }))
 
         return paths
 
     def task2(self, input):
         paths = 0
-        queue = deque([("start", {"start",}, False),])
+        queue = deque([("start", {"start", }, False), ])
 
         while queue:
             current, previous, previous_double = queue.pop()
             for next in input[current]:
                 if next == "start":
                     continue
-                elif next == "end":
+
+                if next == "end":
                     paths += 1
                 else:
                     is_small = next.lower() == next
 
                     if not ((is_small and next in previous) and previous_double):
-                        queue.append((next, previous | {next,}, previous_double or (is_small and next in previous)))
+                        queue.append((next, previous | {next, }, previous_double or (is_small and next in previous)))
 
         return paths
 
+
 class CaveConnectionParser(InputParser):
-    def parse(self, input):        
+    def parse(self, input):
         data = defaultdict(set)
-        for l in input:
-            split = l.split('-')
+        for line in input:
+            split = line.split('-')
             data[split[0]].add(split[1])
             data[split[1]].add(split[0])
 

@@ -98,7 +98,7 @@ if __name__ == "__main__":
     print("")
     if len(sys.argv) > 3 and sys.argv[3] == 'update':
         exit()
-    
+
     input = fetch_input(year, day)
     write_file(year, "day%s-input.txt" % day, input)
 
@@ -110,7 +110,7 @@ if __name__ == "__main__":
         print("Generating day%s.py" % (day))
         script = generate_script(day, title)
         write_file(year, "day%s.py" % day, script)
-    
+
     year_init_file = "./%s/__init__.py" % year
     year_init_data = open(year_init_file).read().splitlines()
     day_import_line = "from .day%s import Day%s" % (day, day)

@@ -1,6 +1,6 @@
-
 from input_parser.input_parser import InputParser
 from utils.grid import Grid
+
 
 class IntGridParser(InputParser):
     def parse(self, input):

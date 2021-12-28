@@ -23,20 +23,22 @@ class Day(ABC):
     def task2(self, input):
         pass
 
+    @property
     def day(self):
         return self.__class__.__name__
 
+    @property
     def number(self):
-        return self.day().replace("Day", "")
+        return self.day.replace("Day", "")
 
     def read_input(self):
         path = sys.modules[self.__module__].__file__.replace(".py", "-input.txt")
-        
+
         file = open(path, 'r')
         input = file.read().splitlines()
         file.close()
 
-        return self.input_parser().parse(input)
+        return self.input_parser.parse(input)
 
     def log(self, message):
         if not self.debug:

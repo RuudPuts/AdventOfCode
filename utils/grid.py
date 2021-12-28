@@ -1,8 +1,11 @@
-from collections import namedtuple
+from PIL import Image, ImageDraw, ImageFont
+from utils import vector4
+from utils.drawable import Drawable
 from utils.ocr.ocr import OCR
 from utils.vector2 import Vector2
+from utils.vector4 import Vector4
 
-class Grid:
+class Grid(Drawable):
     def __init__(self, data=[], width=-1, height=-1, initial_value=''):
         if data:
             self.data = data
@@ -32,7 +35,7 @@ class Grid:
 
     def contains(self, point):
         return point.x in range(self.width) and point.y in range(self.height)
- 
+
     def map(self, block):
         for y in range(self.height):
             for x in range(self.width):
@@ -79,8 +82,11 @@ class Grid:
                 if block(self.get(point)):
                     yield point
 
-    def neighbours(self, point):
-        return [p for p in point.adjacent if self.contains(p)]
+    def neighbours4(self, point):
+        return [p for p in point.adjacent4 if self.contains(p)]
+
+    def neighbours6(self, point):
+        return [p for p in point.adjacent6 if self.contains(p)]
 
     def ocr(self, fill_value):
         self.map(lambda _, value: value if value == fill_value else ' ')
@@ -96,3 +102,30 @@ class Grid:
         print()
         print('\n'.join(table))
         print()
+
+    @property
+    def filename(self):
+        return 'grid'
+
+    @property
+    def image_size(self):
+        return (self.width * self.image_scale, self.height * self.image_scale)
+
+    @property
+    def image_scale(self):
+        return 80
+
+    def draw_with(self, draw):
+        for y in range(self.height):
+            for x in range(self.width):
+                point = Vector2(x, y)
+
+                value = self.get(point)
+                grey = int(255 / value)
+                color = (grey, grey, grey)
+
+                rect = Vector4(point, 1, 1)
+                rect = rect.scale(self.image_scale)
+
+                font = ImageFont.truetype("Arial", int(self.image_scale / 2))
+                draw.text((rect.center.x, rect.center.y), str(value), fill=color, anchor="mm", font=font)

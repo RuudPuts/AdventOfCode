@@ -22,19 +22,19 @@ def list_days(year_module):
 
 def run_day(day_class):
     day = day_class()
-    print("Day %s - %s" % (day.number(), day.title()))
+    print("Day %s - %s" % (day.number, day.title))
 
     task1_start = time.time()
     task1_result = day.task1(day.read_input())
     task1_end = time.time()
     task1_duration = task1_end - task1_start
-    print("  Task 1: %s (took %fms)" % (str(task1_result), task1_duration))
+    print("  Task 1: %s (took %fms)" % (str(task1_result), task1_duration * 1000))
 
     task2_start = time.time()
     task2_result = day.task2(day.read_input())
     task2_end = time.time()
     task2_duration = task2_end - task2_start
-    print("  Task 2: %s (took %fms)" % (str(task2_result), task2_duration))
+    print("  Task 2: %s (took %fms)" % (str(task2_result), task2_duration * 1000))
 
 if __name__ == "__main__":
     if len(sys.argv) == 3:
@@ -51,6 +51,7 @@ if __name__ == "__main__":
         years = list_years()
 
         for year in years:
+            print()
             print("Advent of Code " + year)
 
             year_module = importlib.import_module(year)
@@ -59,3 +60,6 @@ if __name__ == "__main__":
                 print("")
 
                 run_day(day_class)
+
+            print()
+            print()
