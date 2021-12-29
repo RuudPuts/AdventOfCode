@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 import heapq
-from typing import Generic, TypeVar
+from typing import DefaultDict, Generic, TypeVar
 
 from utils.grid import Grid
 
@@ -36,34 +36,32 @@ class PathFinder(ABC, Generic[_T]):
         pass
 
     def find_path(self, start: _T, end: _T):
-        visited: dict[_T: int] = {}
+        visited = {}
+        queue = []
+        node_parents = {}
+        node_costs = DefaultDict(lambda: float('inf'))
 
-        queue = [PathNode(start, 0, None)]
-        heapq.heapify(queue)
+        node_costs[start] = 0
+        heapq.heappush(queue, (0, PathNode(start, 0, None)))
 
         while queue:
-            path_node = heapq.heappop(queue)
-
-            if path_node.node in visited and visited[path_node.node] < path_node.cost:
-                continue
-
-            visited[path_node.node] = path_node.cost
+            _, path_node = heapq.heappop(queue)
 
             if path_node.node == end:
-                print(f"Queue: {len(queue)}")
-                for f in queue:
-                    print(f"   {f.node}")
-                return path_node
+                break
+            visited[path_node.node] = path_node
 
-            for pn in self.neighbours(path_node):
-                if pn in queue:
-                    print("✅")
-                heapq.heappush(queue, pn)
+            for neighbour in self.neighbours(path_node):
+                if neighbour.node in visited:
+                    continue
 
-            if len(queue) > 100:
-                for q in queue:
-                    print(q.node)
-                return None
+                new_cost = node_costs[path_node.node] + neighbour.cost
+                if new_cost < node_costs[neighbour.node]:
+                    node_parents[neighbour.node] = path_node.node
+                    node_costs[neighbour.node] = new_cost
+                    heapq.heappush(queue, (new_cost, neighbour))
+
+        return node_costs[end]
 
 
 class Dijkstra(PathFinder):
