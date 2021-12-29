@@ -5,9 +5,11 @@ import sys
 from utils import windows
 
 class Day1(Day):
+    @property
     def title(self):
         return "Sonar Sweep"
 
+    @property
     def input_parser(self):
         return ConvertToIntParser()
 

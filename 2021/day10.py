@@ -4,15 +4,17 @@ from collections import namedtuple
 from utils import median
 
 class Day10(Day):
+    @property
     def title(self):
         return "Syntax Scoring"
 
+    @property
     def input_parser(self):
         return NavigationSubsystemParser()
 
     def task1(self, input):
         input = list(filter(lambda x: not x.valid, input))
-        
+
         return sum(list(map(lambda x: x.illegal_char_penalty, input)))
 
     def task2(self, input):

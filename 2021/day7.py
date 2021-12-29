@@ -3,9 +3,11 @@ from input_parser import CommaSeparatedIntParser
 import sys
 
 class Day7(Day):
+    @property
     def title(self):
         return "The Treachery of Whales"
 
+    @property
     def input_parser(self):
         return CommaSeparatedIntParser()
 

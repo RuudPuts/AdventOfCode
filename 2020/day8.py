@@ -3,9 +3,11 @@ from input_parser.input_parser import InputParser
 import re
 
 class Day8(Day):
+    @property
     def title(self):
         return "Handheld Halting"
 
+    @property
     def input_parser(self):
         return IntructionsParser()
 
@@ -25,7 +27,7 @@ class Day8(Day):
         for offset, instruction in vm.instruction_history.items():
             if instruction.operation == 'jmp':
                 patchable_instructions[offset] = instruction
-        
+
         self.log("POSSIBLE PATCHES")
         for offset, instruction in patchable_instructions.items():
             self.log("  %d | %s %d" % (offset, instruction.operation, instruction.value))
@@ -34,7 +36,7 @@ class Day8(Day):
         while not success and patch_try < len(patchable_instructions):
             instruction_to_patch = list(patchable_instructions.items())[patch_try]
             patch_offset = instruction_to_patch[0]
-            
+
             patched_instructions = input.copy()
             patched_instructions[patch_offset] = Instruction('nop', instruction_to_patch[1].value)
 

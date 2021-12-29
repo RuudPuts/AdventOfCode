@@ -2,9 +2,11 @@ from day import Day
 from input_parser import CommaSeparatedIntParser
 
 class Day6(Day):
+    @property
     def title(self):
         return "Lanternfish"
 
+    @property
     def input_parser(self):
         return FishParser()
 
@@ -17,7 +19,7 @@ class Day6(Day):
     def simulate(self, fish, number_of_days):
         for _ in range(number_of_days):
             fish = self.simulate_day(fish)
-            
+
         return sum(fish.values())
 
     def simulate_day(self, input):
@@ -31,12 +33,12 @@ class Day6(Day):
 
         if -1 in fish.keys():
             del fish[-1]
-        
+
         if 6 in fish.keys():
             fish[6] = fish[6] + offspring
         elif offspring > 0:
             fish[6] = offspring
-            
+
         fish[8] = offspring
 
         return fish
@@ -44,7 +46,7 @@ class Day6(Day):
 class FishParser(CommaSeparatedIntParser):
     def parse(self, input):
         input = super().parse(input)
-                
+
         fish = {}
         for value in set(input):
             fish[value] = input.count(value)

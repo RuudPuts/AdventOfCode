@@ -3,9 +3,11 @@ from input_parser import InputParser
 import re
 
 class Day2(Day):
+    @property
     def title(self):
         return "Dive!"
 
+    @property
     def input_parser(self):
         return DirectionsParser()
 
@@ -18,7 +20,7 @@ class Day2(Day):
     def task2(self, input):
         sub = Submarine()
         sub.move_part2(input)
-        
+
         return sub.horizontal * sub.depth
 
 class Submarine:

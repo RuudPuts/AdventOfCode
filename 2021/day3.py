@@ -2,9 +2,11 @@ from day import Day
 from input_parser import DummyParser
 
 class Day3(Day):
+    @property
     def title(self):
         return "Binary Diagnostic"
 
+    @property
     def input_parser(self):
         return DummyParser()
 
@@ -40,12 +42,12 @@ class Day3(Day):
 
         while len(remaining) > 1 and bit < bin_length:
             bits = list(map(lambda x: int(x[bit]), remaining))
-            
+
             if sum(bits) >= len(remaining) / 2:
                 result = str(0 if use_least_common_bit else 1)
             else:
                 result = str(1 if use_least_common_bit else 0)
-            
+
             remaining = list(filter(lambda x: x[bit] == result, remaining))
             bit +=1
 

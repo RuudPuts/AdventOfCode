@@ -4,9 +4,11 @@ from input_parser import InputParser
 import re
 
 class Day4(Day):
+    @property
     def title(self):
         return "Passport Processing"
 
+    @property
     def input_parser(self):
         return PassportParser()
 
@@ -30,7 +32,7 @@ class Day4(Day):
 
     def task2(self, input):
         passports, _ = self.validate_passports(input)
-        
+
         field_validators = {
             'byr': lambda x: int(x) >= 1920 and int(x) <= 2002,
             'iyr': lambda x: int(x) >= 2010 and int(x) <= 2020,
@@ -74,7 +76,7 @@ class Day4(Day):
 
         valid_entries = []
         invalid_entries = []
-        
+
         for entry in input:
             keys = list(entry.keys())
             [x for x in optional_fields if x not in keys or keys.remove(x)]
@@ -83,7 +85,7 @@ class Day4(Day):
                 valid_entries.append(entry)
             else:
                 invalid_entries.append(entry)
-        
+
         return valid_entries, invalid_entries
 
 class PassportParser(InputParser):
@@ -102,7 +104,7 @@ class PassportParser(InputParser):
                 entry = []
             else:
                 entry.append(line)
-                
+
         entries.append(' '.join(entry) + " ")
 
         return list(map(self.parse_entry, entries))

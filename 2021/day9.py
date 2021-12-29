@@ -3,9 +3,11 @@ from input_parser import DummyParser
 from utils import prod
 
 class Day9(Day):
+    @property
     def title(self):
         return "Smoke Basin"
 
+    @property
     def input_parser(self):
         return DummyParser()
 
@@ -34,7 +36,7 @@ class Day9(Day):
             basins[p] = self.find_basin(input, p)
 
         largest = sorted(list(map(lambda x: len(x), basins.values())))
-        
+
         return prod(largest[-3:])
 
     def find_low_points(self, input):
@@ -69,11 +71,11 @@ class Day9(Day):
             for p in to_check:
                 neighbours = self.neighbours(p[0], p[1], width, height)
                 neighbours = list(filter(lambda n: n not in basin, neighbours))
-                
+
                 neighbours_to_check = list(filter(lambda n: int(input[n[1]][n[0]]) < 9, neighbours))
                 new_points.extend(neighbours_to_check)
                 basin.extend(neighbours_to_check)
-                
+
             to_check = new_points
 
         return basin

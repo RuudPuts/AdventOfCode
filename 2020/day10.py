@@ -4,9 +4,11 @@ from collections import defaultdict
 import itertools
 
 class Day10(Day):
+    @property
     def title(self):
         return "Adapter Array"
 
+    @property
     def input_parser(self):
         return ConvertToIntParser()
 
@@ -26,7 +28,7 @@ class Day10(Day):
         input.insert(0, 0)
         input.append(max(input) + 3)
 
-        count = {0: 1} 
+        count = {0: 1}
         for i in input[1:]:
             count[i] = count.get(i - 1, 0) + count.get(i - 2, 0) + count.get(i - 3, 0)
 
