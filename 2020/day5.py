@@ -4,15 +4,17 @@ from input_parser import DummyParser
 import math
 
 class Day5(Day):
+    @property
     def title(self):
         return "Binary Boarding"
 
+    @property
     def input_parser(self):
         return DummyParser()
 
     def task1(self, input):
         highest_id = 0
-        
+
         for data in input:
             self.log("Data:    " + data)
             row = self.resolve(data[0:7], 'F', 'B', 127)
@@ -38,7 +40,7 @@ class Day5(Day):
         for data in input:
             row = self.resolve(data[0:7], 'F', 'B', 127)
             column = self.resolve(data[-3:], 'L', 'R', 7)
-            
+
             seat = (column, row)
             if seat in open_seats:
                 open_seats.remove(seat)
@@ -58,10 +60,10 @@ class Day5(Day):
     def resolve(self, input, lower_char, higher_char, start_value):
         lower_bound = 0
         upper_bound = start_value
-        
+
         for i in range(0, len(input) - 1):
             char = input[i]
-            if char == lower_char:        
+            if char == lower_char:
                 upper_bound = math.floor((upper_bound - lower_bound) / 2) + lower_bound
             elif char == higher_char:
                 lower_bound = math.ceil((upper_bound - lower_bound) / 2) + lower_bound

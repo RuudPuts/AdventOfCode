@@ -3,16 +3,18 @@ from input_parser import InputParser
 import re
 
 class Day7(Day):
+    @property
     def title(self):
         return "Handy Haversacks"
 
+    @property
     def input_parser(self):
         return LuggageRuleParser()
 
     def task1(self, input):
         allowed_results = list(input.keys())
         results = []
-        
+
         cache = {}
         targets = ["shiny gold"]
         while len(targets) > 0:
@@ -57,7 +59,7 @@ class LuggageRuleParser(InputParser):
     def parse_rule(self, line):
         bag_match = re.match(r"(.*?) bags contain ", line)
         bag = bag_match.group(1)
-        
+
         contains_string = line[bag_match.span()[1]:]
         contains_matches = re.findall(r"(\d) (.*?) bag|bags\,|\.", contains_string)[:-1]
         contains = list(map(lambda x: { 'bag' : x[1], 'count': int(x[0]) }, contains_matches))

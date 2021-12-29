@@ -3,9 +3,11 @@ from input_parser import InputParser
 from utils import Vector2, Grid
 import re
 class Day13(Day):
+    @property
     def title(self):
         return "Transparent Origami"
 
+    @property
     def input_parser(self):
         return InstructionsParser()
 
@@ -50,7 +52,7 @@ class Day13(Day):
 
                 if max_folds and folds == max_folds:
                     return grid
-            
+
         return grid
 
 class Instruction:
@@ -61,14 +63,14 @@ class FoldInstruction(Instruction):
         self.axis = axis
         self.index = index
 
-    def __repr__(self): 
+    def __repr__(self):
         return "%s(axis=%s index=%d)" % (self.__class__.__name__, self.axis, self.index)
 
 class DotInstruction(Instruction):
     def __init__(self, point):
         self.point = point
 
-    def __repr__(self): 
+    def __repr__(self):
         return "%s(point=%s)" % (self.__class__.__name__, self.point)
 
 class InstructionsParser(InputParser):

@@ -3,9 +3,11 @@ from input_parser import IntGridParser
 from utils import Vector2
 
 class Day11(Day):
+    @property
     def title(self):
         return "Dumbo Octopus"
 
+    @property
     def input_parser(self):
         return IntGridParser()
 
@@ -28,7 +30,7 @@ class Day11(Day):
             for point in to_flash:
                 flashed.append(point)
 
-                for n in grid.neighbours(point):
+                for n in grid.neighbours6(point):
                     grid.set(n, grid.get(n) + 1)
 
             to_flash = self.points_to_flash(grid, flashed)

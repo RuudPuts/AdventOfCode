@@ -2,9 +2,11 @@ from day import Day
 from input_parser import SplitBlankLineParser
 
 class Day6(Day):
+    @property
     def title(self):
         return "Custom Customs"
 
+    @property
     def input_parser(self):
         return SplitBlankLineParser()
 

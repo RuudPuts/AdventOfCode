@@ -7,10 +7,12 @@ import re
 import sys
 import time
 
+
 def list_years():
     regex = re.compile(r"20[1|2]\d")
 
     return list(filter(regex.match, os.listdir('.')))
+
 
 def list_days(year_module):
     days = []
@@ -20,21 +22,23 @@ def list_days(year_module):
 
     return days
 
+
 def run_day(day_class):
     day = day_class()
-    print("Day %s - %s" % (day.number, day.title))
+    print(f"Day {day.number} - {day.title}")
 
-    task1_start = time.time()
+    task1_start = time.perf_counter()
     task1_result = day.task1(day.read_input())
-    task1_end = time.time()
+    task1_end = time.perf_counter()
     task1_duration = task1_end - task1_start
-    print("  Task 1: %s (took %fms)" % (str(task1_result), task1_duration * 1000))
+    print(f"  Task 1: {task1_result} (took {task1_duration * 1000:0.4f}ms)")
 
-    task2_start = time.time()
+    task2_start = time.perf_counter()
     task2_result = day.task2(day.read_input())
-    task2_end = time.time()
+    task2_end = time.perf_counter()
     task2_duration = task2_end - task2_start
-    print("  Task 2: %s (took %fms)" % (str(task2_result), task2_duration * 1000))
+    print(f"  Task 2: {task2_result} (took {task2_duration * 1000:0.4f}ms)")
+
 
 if __name__ == "__main__":
     if len(sys.argv) == 3:
@@ -45,7 +49,7 @@ if __name__ == "__main__":
 
         year_module = importlib.import_module(year)
         for day_class in list_days(year_module):
-            if "Day%s" % day in str(day_class):
+            if str(day_class).endswith(f"Day{day}'>"):
                 run_day(day_class)
     else:
         years = list_years()

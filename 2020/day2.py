@@ -4,9 +4,11 @@ from input_parser import InputParser
 import re
 
 class Day2(Day):
+    @property
     def title(self):
         return "Password Philosophy"
 
+    @property
     def input_parser(self):
         return PasswordParser()
 
@@ -35,7 +37,7 @@ class PasswordParser(InputParser):
     def parse_line(self, line):
         regex = r"(\d+)-(\d+) (\w+): (.*)$"
         match = re.match(regex, line)
-        
+
         return {
             'num_a': int(match.group(1)),
             'num_b': int(match.group(2)),

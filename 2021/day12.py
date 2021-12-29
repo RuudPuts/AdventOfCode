@@ -6,9 +6,11 @@ from collections import defaultdict, deque
 
 
 class Day12(Day):
+    @property
     def title(self):
         return "Passage Pathing"
 
+    @property
     def input_parser(self):
         return CaveConnectionParser()
 

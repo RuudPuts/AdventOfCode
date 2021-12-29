@@ -24,15 +24,17 @@ class Day8(Day):
         [0, 1, 2, 3, 5, 6],    # 9
     ]
 
+    @property
     def title(self):
         return "Seven Segment Search"
 
+    @property
     def input_parser(self):
         return SegmentDisplayParser()
 
     def task1(self, input):
         all_outputs = flatten(list(map(lambda x: x.outputs, input)))
-        
+
         return len(list(filter(lambda x: len(x) in self.didget_for_segments.keys(), all_outputs)))
 
     def task2(self, input):

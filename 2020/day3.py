@@ -4,9 +4,11 @@ from input_parser import ConvertToListParser
 from functools import reduce
 
 class Day3(Day):
+    @property
     def title(self):
         return "Toboggan Trajectory"
 
+    @property
     def input_parser(self):
         return ConvertToListParser()
 

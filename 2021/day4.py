@@ -3,9 +3,11 @@ from input_parser import InputParser
 import re
 
 class Day4(Day):
+    @property
     def title(self):
         return "Giant Squid"
 
+    @property
     def input_parser(self):
         return BingoParser()
 
@@ -73,7 +75,7 @@ class BingoBoard:
                     numbs.append(self.numbers[row][column])
 
         return numbs
-                    
+
 
     def has_won(self):
         for row in self.checked:

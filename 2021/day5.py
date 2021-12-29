@@ -6,9 +6,11 @@ import re
 from utils import generate_grid
 
 class Day5(Day):
+    @property
     def title(self):
         return "Hydrothermal Venture"
 
+    @property
     def input_parser(self):
         return LineParser()
 
@@ -21,7 +23,7 @@ class Day5(Day):
 
     def run_task(self, input):
         board = Board(self.get_board_size(input))
-        
+
         for line in input:
             for c in line.coordinates():
                 board.count_coordinate(c)
@@ -49,7 +51,7 @@ class Board:
         for row in self.grid:
             print(''.join(list(map(lambda x: str(x) if x > 0 else '.', row))))
         print("")
-                
+
     def count_coordinate(self, coordinate):
         self.grid[coordinate.y][coordinate.x] += 1
 
