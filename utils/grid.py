@@ -92,11 +92,11 @@ class Grid(Drawable):
         self.map(lambda _, value: value if value == fill_value else ' ')
         return OCR(self.data).text()
 
-    def print(self):
+    def print(self, delimeter=''):
         # From https://stackoverflow.com/a/13214945
-        s = [[str(e) for e in row] for row in self]
+        s = [[str(self.get(Vector2(x, y))) for x in range(self.width)] for y in range(self.height)]
         lens = [max(map(len, col)) for col in zip(*s)]
-        fmt = ''.join('{{:{}}}'.format(x) for x in lens)
+        fmt = delimeter.join('{{:{}}}'.format(x) for x in lens)
         table = [fmt.format(*row) for row in s]
 
         print()

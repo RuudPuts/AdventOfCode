@@ -8,13 +8,8 @@ from utils.grid import Grid
 _T = TypeVar("_T")
 
 
-# @dataclass
 class PathNode(Generic[_T]):
-    # node: _T
-    # cost: int
-    # origin: PathNode[_T]
-
-    def __init__(self, node: _T, cost: int, origin):  #: PathNode[_T]):
+    def __init__(self, node: _T, cost: int, origin):
         self.node = node
         self.cost = cost
         self.origin = origin
@@ -29,10 +24,6 @@ class PathNode(Generic[_T]):
 class PathFinder(ABC, Generic[_T]):
     @abstractmethod
     def neighbours(self, pn: PathNode[_T]):
-        pass
-
-    @abstractmethod
-    def cost(self, pn: PathNode[_T]):
         pass
 
     def find_path(self, start: _T, end: _T):
@@ -65,5 +56,4 @@ class PathFinder(ABC, Generic[_T]):
 
 
 class Dijkstra(PathFinder):
-    def cost(self, pn: PathNode[_T]):
-        return pn.cost
+    pass
