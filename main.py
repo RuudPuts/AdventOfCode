@@ -27,14 +27,20 @@ def run_day(day_class):
     day = day_class()
     print(f"Day {day.number} - {day.title}")
 
+    if day.tests:
+        print("  Running tests")
+        day.test()
+
     task1_start = time.perf_counter()
-    task1_result = day.task1(day.read_input())
+    task1_input = day.input_parser.parse(day.read_input())
+    task1_result = day.task1(task1_input)
     task1_end = time.perf_counter()
     task1_duration = task1_end - task1_start
     print(f"  Task 1: {task1_result} (took {task1_duration * 1000:0.4f}ms)")
 
     task2_start = time.perf_counter()
-    task2_result = day.task2(day.read_input())
+    task2_input = day.input_parser.parse(day.read_input())
+    task2_result = day.task2(task2_input)
     task2_end = time.perf_counter()
     task2_duration = task2_end - task2_start
     print(f"  Task 2: {task2_result} (took {task2_duration * 1000:0.4f}ms)")
