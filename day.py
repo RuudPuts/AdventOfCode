@@ -75,6 +75,7 @@ class DayTest:
             input = self.day.input_parser.parse(self.day.read_input())
         else:
             input = self.day.input_parser.parse(self.input)
+
         self.result = self.function(input)
         self.success = self.result == self.expected
 
