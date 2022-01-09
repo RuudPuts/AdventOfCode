@@ -18,8 +18,6 @@ class Day(ABC):
 
     def test(self):
         for test in self.tests:
-            print()
-            print(f"    Testing '{test.description}'")
             test.evaluate()
             print(f"    {'✅' if test.success else '❌'} Test '{test.description}' {'succeeded!' if test.success else f'failed! Expected {test.expected}, got {test.result}' }")
 
