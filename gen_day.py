@@ -2,16 +2,19 @@
 
 import os
 import sys
-import requests
 import re
+import requests
 from jinja2 import Environment, FileSystemLoader
+
 
 SESSION = 'AOC_SESSION_COOKIE'
 
-def fetch_day(year, day, path_suffix = ''):
+
+def fetch_day(year, day, path_suffix=''):
     print("Fetching %s day %s %s" % (year, day, path_suffix))
     url = "https://adventofcode.com/%s/day/%s%s" % (year, day, path_suffix)
-    return requests.get(url, headers={'Cookie': "session=%s" % SESSION}).text.strip()
+    return requests.get(url, headers={'Cookie': "session=%s" % SESSION, 'User-Agent': "https://github.com/RuudPuts/AdventOfCode by ruud.puts@gmail.com"}).text.strip()
+
 
 def write_file(year, filename, content):
     print("Writing to %s/%s" % (year, filename))
@@ -19,9 +22,11 @@ def write_file(year, filename, content):
     with open("%s/%s" % (year, filename), "w+") as file:
         file.write(content)
 
+
 def fetch_description(year, day):
     print("Fetching description")
     return fetch_day(year, day)
+
 
 def parse_description(description):
     description = description.split("<main>")[1].split("</main>")[0].split('To begin, <a href="')[0].split('Although it hasn\'t changed')[0].split('You can also <span class="share">[Share<span class="share-content">on')[0]

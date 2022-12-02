@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass
 import os
 import sys
+import time
 
 class Day(ABC):
     debug = False
@@ -16,10 +17,67 @@ class Day(ABC):
     def input_parser(self):
         pass
 
+    @property
+    @abstractmethod
+    def example_input(self):
+        pass
+
+    @property
+    @abstractmethod
+    def expected_results(self):
+        pass
+
     def test(self):
+        # Day specific tests
         for test in self.tests:
             test.evaluate()
             print(f"    {'✅' if test.success else '❌'} Test '{test.description}' {'succeeded!' if test.success else f'failed! Expected {test.expected}, got {test.result}' }")
+
+        # Default tests
+
+        tests = [
+            # Task 1
+            DayTest(
+                self,
+                f"Task 1 example == {self.expected_results['task1_example']}",
+                self.example_input.splitlines(),
+                self.expected_results['task1_example'],
+                lambda s: self.task1(s)
+            ),
+            DayTest(
+                self,
+                f"Task 1 == {self.expected_results['task1']}",
+                ['input'],
+                self.expected_results['task1'],
+                lambda s: self.task1(s)
+            ),
+
+            # Task 2
+            DayTest(
+                self,
+                f"Task 2 example == {self.expected_results['task2_example']}",
+                self.example_input.splitlines(),
+                self.expected_results['task2_example'],
+                lambda s: self.task2(s)
+            ),
+            DayTest(
+                self,
+                f"Task 2 == {self.expected_results['task2']}",
+                ['input'],
+                self.expected_results['task2'],
+                lambda s: self.task2(s)
+            )
+        ]
+
+        for test in tests:
+            test_start = time.perf_counter()
+            test.evaluate()
+            test_end = time.perf_counter()
+            test_duration = test_end - test_start
+            print(f"    {'✅' if test.success else '❌'} Test '{test.description}' {'succeeded!' if test.success else f'failed! Expected {test.expected}, got {test.result}' } (took {test_duration * 1000:0.4f}ms)")
+
+            if not test.success:
+                break
 
     @property
     def tests(self):
