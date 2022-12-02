@@ -26,81 +26,79 @@ C Z"""
             "task2": 12429
         }
 
-    class Move(Enum):
-        ROCK = 1
-        PAPER = 2
-        SCISSORS = 3
+    MOVE_ROCK = 1
+    MOVE_PAPER = 2
+    MOVE_SCISSORS = 3
 
-    class Result(Enum):
-        LOST = 0
-        DRAW = 3
-        WIN = 6
+    RESULT_LOST = 0
+    RESULT_DRAW = 3
+    RESULT_WIN = 6
 
     def play(self, other_move, my_move):
         if other_move == my_move:
-            return Day2.Result.DRAW
+            return Day2.RESULT_DRAW
 
-        if (other_move.value + my_move.value) == (Day2.Move.ROCK.value + Day2.Move.SCISSORS.value):
-            if other_move == Day2.Move.ROCK:
-                return Day2.Result.LOST
-            return Day2.Result.WIN
+        if (other_move + my_move) == (Day2.MOVE_ROCK + Day2.MOVE_SCISSORS):
+            if other_move == Day2.MOVE_ROCK:
+                return Day2.RESULT_LOST
+            return Day2.RESULT_WIN
 
-        if other_move.value > my_move.value:
-            return Day2.Result.LOST
+        if other_move > my_move:
+            return Day2.RESULT_LOST
 
-        return Day2.Result.WIN
+        return Day2.RESULT_WIN
 
     def task1(self, input):
         move_map = {
-            'A': Day2.Move.ROCK,
-            'B': Day2.Move.PAPER,
-            'C': Day2.Move.SCISSORS,
+            'A': Day2.MOVE_ROCK,
+            'B': Day2.MOVE_PAPER,
+            'C': Day2.MOVE_SCISSORS,
 
-            'X': Day2.Move.ROCK,
-            'Y': Day2.Move.PAPER,
-            'Z': Day2.Move.SCISSORS,
+            'X': Day2.MOVE_ROCK,
+            'Y': Day2.MOVE_PAPER,
+            'Z': Day2.MOVE_SCISSORS,
         }
 
         score = 0
         for moves in input:
             my_move = move_map[moves[1]]
             result = self.play(move_map[moves[0]], my_move)
-            score = score + my_move.value + result.value
+            score = score + my_move + result
 
         return score
 
     def resolve(self, other_move, outcome):
-        if outcome == Day2.Result.DRAW:
-            return other_move.value
+        if outcome == Day2.RESULT_DRAW:
+            return other_move
 
-        if outcome == Day2.Result.WIN:
-            if other_move == Day2.Move.SCISSORS:
-                return Day2.Move.ROCK.value
-            return other_move.value + 1
+        if outcome == Day2.RESULT_WIN:
+            if other_move == Day2.MOVE_SCISSORS:
+                return Day2.MOVE_ROCK
+            return other_move + 1
 
-        if outcome == Day2.Result.LOST:
-            if other_move == Day2.Move.ROCK:
-                return Day2.Move.SCISSORS.value
-            return other_move.value - 1
+        if outcome == Day2.RESULT_LOST:
+            if other_move == Day2.MOVE_ROCK:
+                return Day2.MOVE_SCISSORS
+            return other_move - 1
 
     def task2(self, input):
         move_map = {
-            'A': Day2.Move.ROCK,
-            'B': Day2.Move.PAPER,
-            'C': Day2.Move.SCISSORS
+            'A': Day2.MOVE_ROCK,
+            'B': Day2.MOVE_PAPER,
+            'C': Day2.MOVE_SCISSORS
         }
 
         result_map = {
-            'X': Day2.Result.LOST,
-            'Y': Day2.Result.DRAW,
-            'Z': Day2.Result.WIN,
+            'X': Day2.RESULT_LOST,
+            'Y': Day2.RESULT_DRAW,
+            'Z': Day2.RESULT_WIN,
         }
 
         score = 0
         for moves in input:
             result = result_map[moves[1]]
             my_move = self.resolve(move_map[moves[0]], result)
-            score = score + my_move + result.value
+            score = score + my_move + result
 
         return score
 
