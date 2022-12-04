@@ -1,5 +1,5 @@
 from day import Day
-from input_parser import DummyParser
+from input_parser import InputParser
 
 
 class Day{{ day }}(Day):
@@ -9,7 +9,7 @@ class Day{{ day }}(Day):
 
     @property
     def input_parser(self):
-        return DummyParser()
+        return InputParser()
 
     @property
     def example_input(self):

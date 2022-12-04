@@ -1,4 +1,4 @@
-# Day 1: Calorie Counting 
+# Day 1: Calorie Counting
 ## Task 1
 Santa's reindeer typically eat regular reindeer food, but they need a lot of <a href="/2018/day/25">magical energy</a> to deliver presents on Christmas. For that, their favorite snack is a special type of <em class="star">star** fruit that only grows deep in the jungle. The Elves have brought you on their annual expedition to the grove where the fruit grows.
 
@@ -16,12 +16,16 @@ For example, suppose the Elves finish writing their items' Calories and end up w
 1000
 2000
 3000
+
 4000
+
 5000
 6000
+
 7000
 8000
 9000
+
 10000
 ```
 
