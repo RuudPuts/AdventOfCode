@@ -11,6 +11,7 @@ There's one major catch - crab submarines can only move horizontally.
 You quickly make a list of **the horizontal position of each crab** (your puzzle input). Crab submarines have limited fuel, so you need to find a way to make all of their horizontal positions match while requiring them to spend as little fuel as possible.
 
 For example, consider the following horizontal positions:
+
 ```
 16,1,2,0,4,2,7,1,2,14
 ```

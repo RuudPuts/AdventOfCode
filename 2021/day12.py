@@ -14,6 +14,25 @@ class Day12(Day):
     def input_parser(self):
         return CaveConnectionParser()
 
+    @property
+    def example_input(self):
+        return """start-A
+start-b
+A-c
+A-b
+b-d
+A-end
+b-end"""
+
+    @property
+    def expected_results(self):
+        return {
+            "task1_example": 10,
+            "task1": 4549,
+            "task2_example": 36,
+            "task2": 120535
+        }
+
     def task1(self, input):
         paths = 0
         queue = deque([("start", {"start", }), ])

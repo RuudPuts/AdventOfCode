@@ -14,6 +14,28 @@ class Day5(Day):
     def input_parser(self):
         return LineParser()
 
+    @property
+    def example_input(self):
+        return """0,9 -> 5,9
+8,0 -> 0,8
+9,4 -> 3,4
+2,2 -> 2,1
+7,0 -> 7,4
+6,4 -> 2,0
+0,9 -> 2,9
+3,4 -> 1,4
+0,0 -> 8,8
+5,5 -> 8,2"""
+
+    @property
+    def expected_results(self):
+        return {
+            "task1_example": 5,
+            "task1": 4993,
+            "task2_example": 12,
+            "task2": 21101
+        }
+
     def task1(self, input):
         input = self.filter_diagonal_lines(input)
         return self.run_task(input)

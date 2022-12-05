@@ -13,6 +13,36 @@ class Day14(Day):
     def input_parser(self):
         return PolymerizationParser()
 
+    @property
+    def example_input(self):
+        return """NNCB
+
+CH -> B
+HH -> N
+CB -> H
+NH -> C
+HB -> C
+HC -> B
+HN -> C
+NN -> C
+BH -> H
+NC -> B
+NB -> B
+BN -> B
+BB -> N
+BC -> B
+CC -> N
+CN -> C"""
+
+    @property
+    def expected_results(self):
+        return {
+            "task1_example": 1588,
+            "task1": 2408,
+            "task2_example": 2188189693529,
+            "task2": 2651311098752
+        }
+
     def task1(self, input):
         start, rules = input
 

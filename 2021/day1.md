@@ -11,6 +11,7 @@ Collect stars by solving puzzles.  Two puzzles will be made available on each da
 As the submarine drops below the surface of the ocean, it automatically performs a sonar sweep of the nearby sea floor. On a small screen, the sonar sweep report (your puzzle input) appears: each line is a measurement of the sea floor depth as the sweep looks further and further away from the submarine.
 
 For example, suppose you had the following report:
+
 ```
 199
 200
@@ -29,6 +30,7 @@ This report indicates that, scanning outward from the submarine, the sonar sweep
 The first order of business is to figure out how quickly the depth increases, just so you know what you're dealing with - you never know if the keys will get <span title="Does this premise seem fishy to you?">carried into deeper water</span> by an ocean current or a fish or something.
 
 To do this, count **the number of times a depth measurement increases** from the previous measurement. (There is no measurement before the first measurement.) In the example above, the changes are as follows:
+
 ```
 199 (N/A - no previous measurement)
 200 (**increased**)
@@ -47,12 +49,11 @@ In this example, there are **`7`** measurements that are larger than the previou
 **How many measurements are larger than the previous measurement?**
 
 Your puzzle answer was `1316`.
-<p class="day-success">The first half of this puzzle is complete! It provides one gold star: *
-
 ## Task 2
 Considering every single measurement isn't as useful as you expected: there's just too much noise in the data.
 
 Instead, consider sums of a **three-measurement sliding window**.  Again considering the above example:
+
 ```
 199  A      
 200  A B    
@@ -71,6 +72,7 @@ Start by comparing the first and second three-measurement windows. The measureme
 Your goal now is to count **the number of times the sum of measurements in this sliding window increases** from the previous sum. So, compare `A` with `B`, then compare `B` with `C`, then `C` with `D`, and so on. Stop when there aren't enough measurements left to create a new three-measurement sum.
 
 In the above example, the sum of each three-measurement window is as follows:
+
 ```
 A: 607 (N/A - no previous sum)
 B: 618 (**increased**)
@@ -86,6 +88,9 @@ In this example, there are **`5`** sums that are larger than the previous sum.
 
 Consider sums of a three-measurement sliding window. **How many sums are larger than the previous sum?**
 
-<form method="post" action="1/answer"><input type="hidden" name="level" value="2"/>
-Answer: <input type="text" name="answer" autocomplete="off"/> <input type="submit" value="[Submit]"/>
-</form>
+Your puzzle answer was `1344`.
+<p class="day-success">Both parts of this puzzle are complete! They provide two gold stars: **
+
+At this point, you should <a href="/2021">return to your Advent calendar</a> and try another puzzle.
+
+If you still want to see it, you can <a href="1/input" target="_blank">get your puzzle input</a>.

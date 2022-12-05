@@ -101,8 +101,6 @@ Here are a few more examples of hexadecimal-encoded transmissions:
 Decode the structure of your hexadecimal-encoded BITS transmission; **what do you get if you add up the version numbers in all packets?**
 
 Your puzzle answer was `906`.
-<p class="day-success">The first half of this puzzle is complete! It provides one gold star: *
-
 ## Task 2
 Now that you have the structure of your transmission decoded, you can calculate the value of the expression it represents.
 
@@ -131,6 +129,9 @@ For example:
 
 **What do you get if you evaluate the expression represented by your hexadecimal-encoded BITS transmission?**
 
-<form method="post" action="16/answer"><input type="hidden" name="level" value="2"/>
-Answer: <input type="text" name="answer" autocomplete="off"/> <input type="submit" value="[Submit]"/>
-</form>
+Your puzzle answer was `819324480368`.
+<p class="day-success">Both parts of this puzzle are complete! They provide two gold stars: **
+
+At this point, you should <a href="/2021">return to your Advent calendar</a> and try another puzzle.
+
+If you still want to see it, you can <a href="16/input" target="_blank">get your puzzle input</a>.

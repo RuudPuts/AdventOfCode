@@ -60,8 +60,6 @@ In the above example, an illegal `)` was found twice (`2*3 = **6**` points), an 
 Find the first illegal character in each corrupted line of the navigation subsystem. **What is the total syntax error score for those errors?**
 
 Your puzzle answer was `399153`.
-<p class="day-success">The first half of this puzzle is complete! It provides one gold star: *
-
 ## Task 2
 Now, discard the corrupted lines.  The remaining lines are **incomplete**.
 
@@ -104,6 +102,9 @@ Autocomplete tools are an odd bunch: the winner is found by **sorting** all of t
 
 Find the completion string for each incomplete line, score the completion strings, and sort the scores. **What is the middle score?**
 
-<form method="post" action="10/answer"><input type="hidden" name="level" value="2"/>
-Answer: <input type="text" name="answer" autocomplete="off"/> <input type="submit" value="[Submit]"/>
-</form>
+Your puzzle answer was `2995077699`.
+<p class="day-success">Both parts of this puzzle are complete! They provide two gold stars: **
+
+At this point, you should <a href="/2021">return to your Advent calendar</a> and try another puzzle.
+
+If you still want to see it, you can <a href="10/input" target="_blank">get your puzzle input</a>.

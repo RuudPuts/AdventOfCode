@@ -5,6 +5,7 @@ You barely reach the safety of the cave when the whale smashes into the cave mou
 As your submarine slowly makes its way through the cave system, you notice that the four-digit <a href="https://en.wikipedia.org/wiki/Seven-segment_display" target="_blank">seven-segment displays</a> in your submarine are malfunctioning; <span title="Yes, just the four-digit seven-segment ones. Whole batch must have been faulty.">they must have been damaged</span> during the escape. You'll be in a lot of trouble without them, so you'd better figure out what's wrong.
 
 Each digit of a seven-segment display is rendered by turning on or off any of seven segments named `a` through `g`:
+
 ```
   0:      1:      2:      3:      4:
  **aaaa**    ....    **aaaa    aaaa**    ....
@@ -33,9 +34,11 @@ So, you might know that only signal wires `b` and `g` are turned on, but that do
 For each display, you watch the changing signals for a while, make a note of **all ten unique signal patterns** you see, and then write down a single **four digit output value** (your puzzle input). Using the signal patterns, you should be able to work out which pattern corresponds to which digit.
 
 For example, here is what you might see in a single entry in your notes:
+
 ```
 acedgfb cdfbe gcdfa fbcad dab cefabd cdfgeb eafb cagedb ab |
-cdfeb fcadb cdfeb cdbaf```
+cdfeb fcadb cdfeb cdbaf
+```
 
 (The entry is wrapped here to two lines so it fits; in your notes, it will all be on a single line.)
 
@@ -44,6 +47,7 @@ Each entry consists of ten **unique signal patterns**, a `|` delimiter, and fina
 Using this information, you should be able to work out which combination of signal wires corresponds to each of the ten digits. Then, you can decode the four digit output value. Unfortunately, in the above example, all of the digits in the output value (`cdfeb fcadb cdfeb cdbaf`) use five segments and are more difficult to deduce.
 
 For now, **focus on the easy digits**. Consider this larger example:
+
 ```
 be cfbegad cbdgef fgaecd cgeb fdcge agebfd fecdb fabcd edb |
 **fdgacbe** cefdb cefbgd **gcbe**
@@ -72,15 +76,16 @@ Because the digits `1`, `4`, `7`, and `8` each use a unique number of segments, 
 **In the output values, how many times do digits `1`, `4`, `7`, or `8` appear?**
 
 Your puzzle answer was `488`.
-<p class="day-success">The first half of this puzzle is complete! It provides one gold star: *
-
 ## Task 2
 Through a little deduction, you should now be able to determine the remaining digits. Consider again the first example above:
+
 ```
 acedgfb cdfbe gcdfa fbcad dab cefabd cdfgeb eafb cagedb ab |
-cdfeb fcadb cdfeb cdbaf```
+cdfeb fcadb cdfeb cdbaf
+```
 
 After some careful analysis, the mapping between signal wires and segments only make sense in the following configuration:
+
 ```
  dddd
 e    a
@@ -130,6 +135,9 @@ Adding all of the output values in this larger example produces `**61229**`.
 
 For each entry, determine all of the wire/segment connections and decode the four-digit output values. **What do you get if you add up all of the output values?**
 
-<form method="post" action="8/answer"><input type="hidden" name="level" value="2"/>
-Answer: <input type="text" name="answer" autocomplete="off"/> <input type="submit" value="[Submit]"/>
-</form>
+Your puzzle answer was `1040429`.
+<p class="day-success">Both parts of this puzzle are complete! They provide two gold stars: **
+
+At this point, you should <a href="/2021">return to your Advent calendar</a> and try another puzzle.
+
+If you still want to see it, you can <a href="8/input" target="_blank">get your puzzle input</a>.

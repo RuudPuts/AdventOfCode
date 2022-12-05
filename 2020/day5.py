@@ -1,5 +1,5 @@
 from day import Day
-from input_parser import DummyParser
+from input_parser import InputParser
 
 import math
 
@@ -10,7 +10,20 @@ class Day5(Day):
 
     @property
     def input_parser(self):
-        return DummyParser()
+        return InputParser()
+
+    @property
+    def example_input(self):
+        return "FBFBBFFRLR"
+
+    @property
+    def expected_results(self):
+        return {
+            "task1_example": 357,
+            "task1": 848,
+            "task2_example": 358,
+            "task2": 682
+        }
 
     def task1(self, input):
         highest_id = 0

@@ -15,6 +15,28 @@ class Day15(Day):
     def input_parser(self):
         return IntGridParser()
 
+    @property
+    def example_input(self):
+        return """1163751742
+1381373672
+2136511328
+3694931569
+7463417111
+1319128137
+1359912421
+3125421639
+1293138521
+2311944581"""
+
+    @property
+    def expected_results(self):
+        return {
+            "task1_example": 40,
+            "task1": 373,
+            "task2_example": 315,
+            "task2": 2868
+        }
+
     def task1(self, input):
         start = Vector2(0, 0)
         end = Vector2(input.width - 1, input.height - 1)

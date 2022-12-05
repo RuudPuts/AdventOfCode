@@ -20,7 +20,7 @@ def list_days(year_module):
         if inspect.isclass(obj):
             days.append(obj)
 
-    return days
+    return sorted(days, key=lambda x: int(str(x).split('.')[-2][3:]))
 
 
 def run_day(day_class):

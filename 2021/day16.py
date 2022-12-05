@@ -16,6 +16,19 @@ class Day16(Day):
         return HexCharToBinaryParser()
 
     @property
+    def example_input(self):
+        return ""
+
+    @property
+    def expected_results(self):
+        return {
+            "task1_example": 2021,
+            "task1": 906,
+            "task2_example": -1,
+            "task2": 819324480368
+        }
+
+    @property
     def tests(self):
         def version_sum_tests(self):
             tests = {
@@ -23,7 +36,6 @@ class Day16(Day):
                 '620080001611562C8802118E34': 12,
                 'C0015000016115A2E0802F182340': 23,
                 'A0016C880162017C3686B18A3D4780': 31,
-                'input': 906,
             }
 
             return [DayTest(
@@ -45,8 +57,7 @@ class Day16(Day):
                 OperationTest('D8005AC2A8F0', LessThanOperationPacket, 1),
                 OperationTest('F600BC2D8F', GreaterThanOperationPacket, 0),
                 OperationTest('9C005AC2F8F0', EqualOperationPacket, 0),
-                OperationTest('9C0141080250320F1802104A08', EqualOperationPacket, 1),
-                OperationTest('input', SumOperationPacket, 819324480368),
+                OperationTest('9C0141080250320F1802104A08', EqualOperationPacket, 1)
             ]
 
             for test in tests:

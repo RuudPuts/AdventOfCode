@@ -1,4 +1,4 @@
-# Day 2: Password Philosophy 
+# Day 2: Password Philosophy
 ## Task 1
 Your flight departs in a few days from the coastal airport; the easiest way down to the coast from here is via <a href="https://en.wikipedia.org/wiki/Toboggan" target="_blank">toboggan</a>.
 

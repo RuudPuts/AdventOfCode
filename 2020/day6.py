@@ -10,6 +10,29 @@ class Day6(Day):
     def input_parser(self):
         return SplitBlankLineParser()
 
+    @property
+    def example_input(self):
+        return """abc
+a
+b
+c
+ab
+ac
+a
+a
+a
+a
+b"""
+
+    @property
+    def expected_results(self):
+        return {
+            "task1_example": 3,
+            "task1": 6585,
+            "task2_example": 0,
+            "task2": 3276
+        }
+
     def task1(self, input):
         score = 0
         for group in input:

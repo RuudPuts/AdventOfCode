@@ -10,6 +10,19 @@ class Day6(Day):
     def input_parser(self):
         return FishParser()
 
+    @property
+    def example_input(self):
+        return "3,4,3,1,2"
+
+    @property
+    def expected_results(self):
+        return {
+            "task1_example": 5934,
+            "task1": 374927,
+            "task2_example": 26984457539,
+            "task2": 1687617803407
+        }
+
     def task1(self, input):
         return self.simulate(input, number_of_days = 80)
 

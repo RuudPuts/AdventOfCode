@@ -17,10 +17,20 @@ class Day17(Day):
         return RegionParser()
 
     @property
+    def example_input(self):
+        return ""
+
+    @property
+    def expected_results(self):
+        return {
+            "task1": 5778,
+            "task2": 2576
+        }
+
+    @property
     def tests(self):
         tests = {
-            'target area: x=20..30, y=-10..-5': (45, 112),
-            'input': (5778, 2576)
+            'target area: x=20..30, y=-10..-5': (45, 112)
         }
 
         return flatten([[

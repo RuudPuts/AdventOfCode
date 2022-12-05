@@ -88,8 +88,6 @@ In this larger example, in a chain that uses all of the adapters, there are **`2
 Find a chain that uses all of your adapters to connect the charging outlet to your device's built-in adapter and count the joltage differences between the charging outlet, the adapters, and your device. **What is the number of 1-jolt differences multiplied by the number of 3-jolt differences?**
 
 Your puzzle answer was `3000`.
-<p class="day-success">The first half of this puzzle is complete! It provides one gold star: *
-
 ## Task 2
 To completely determine whether you have enough adapters, you'll need to figure out how many different ways they can be arranged. Every arrangement needs to connect the charging outlet to your device. The previous rules about when adapters can successfully connect still apply.
 
@@ -139,6 +137,9 @@ You glance back down at your bag and try to remember why you brought so many ada
 
 **What is the total number of distinct ways you can arrange the adapters to connect the charging outlet to your device?**
 
-<form method="post" action="10/answer"><input type="hidden" name="level" value="2"/>
-Answer: <input type="text" name="answer" autocomplete="off"/> <input type="submit" value="[Submit]"/>
-</form>
+Your puzzle answer was `193434623148032`.
+<p class="day-success">Both parts of this puzzle are complete! They provide two gold stars: **
+
+At this point, you should <a href="/2020">return to your Advent calendar</a> and try another puzzle.
+
+If you still want to see it, you can <a href="10/input" target="_blank">get your puzzle input</a>.

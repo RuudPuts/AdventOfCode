@@ -39,8 +39,6 @@ The total risk of this path is `**40**` (the starting position is never entered,
 **What is the lowest total risk of any path from the top left to the bottom right?**
 
 Your puzzle answer was `373`.
-<p class="day-success">The first half of this puzzle is complete! It provides one gold star: *
-
 ## Task 2
 Now that you know how to find low-risk paths in the cave, you can try to find your way out.
 
@@ -170,6 +168,9 @@ The total risk of this path is `**315**` (the starting position is still never e
 
 Using the full map, **what is the lowest total risk of any path from the top left to the bottom right?**
 
-<form method="post" action="15/answer"><input type="hidden" name="level" value="2"/>
-Answer: <input type="text" name="answer" autocomplete="off"/> <input type="submit" value="[Submit]"/>
-</form>
+Your puzzle answer was `2868`.
+<p class="day-success">Both parts of this puzzle are complete! They provide two gold stars: **
+
+At this point, you should <a href="/2021">return to your Advent calendar</a> and try another puzzle.
+
+If you still want to see it, you can <a href="15/input" target="_blank">get your puzzle input</a>.

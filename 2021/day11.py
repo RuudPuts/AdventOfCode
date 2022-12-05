@@ -11,6 +11,28 @@ class Day11(Day):
     def input_parser(self):
         return IntGridParser()
 
+    @property
+    def example_input(self):
+        return """5483143223
+2745854711
+5264556173
+6141336146
+6357385478
+4167524645
+2176841721
+6882881134
+4846848554
+5283751526"""
+
+    @property
+    def expected_results(self):
+        return {
+            "task1_example": 1656,
+            "task1": 1713,
+            "task2_example": 195,
+            "task2": 502
+        }
+
     def task1(self, input):
         return sum([self.simulate_step(input) for _ in range(100)])
 

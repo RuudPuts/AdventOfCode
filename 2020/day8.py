@@ -11,6 +11,27 @@ class Day8(Day):
     def input_parser(self):
         return IntructionsParser()
 
+    @property
+    def example_input(self):
+        return """nop +0
+acc +1
+jmp +4
+acc +3
+jmp -3
+acc -99
+acc +1
+jmp -4
+acc +6"""
+
+    @property
+    def expected_results(self):
+        return {
+            "task1_example": 5,
+            "task1": 1867,
+            "task2_example": 8,
+            "task2": 1303
+        }
+
     def task1(self, input):
         vm = VirtualConsole()
         vm.run(input)

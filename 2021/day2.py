@@ -11,6 +11,24 @@ class Day2(Day):
     def input_parser(self):
         return DirectionsParser()
 
+    @property
+    def example_input(self):
+        return """forward 5
+down 5
+forward 8
+up 3
+down 8
+forward 2"""
+
+    @property
+    def expected_results(self):
+        return {
+            "task1_example": 150,
+            "task1": 1692075,
+            "task2_example": 900,
+            "task2": 1749524700
+        }
+
     def task1(self, input):
         sub = Submarine()
         sub.move_part1(input)

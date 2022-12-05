@@ -3,6 +3,7 @@
 You come across a field of <a href="https://en.wikipedia.org/wiki/Hydrothermal_vent" target="_blank">hydrothermal vents</a> on the ocean floor! These vents constantly produce large, opaque clouds, so it would be best to avoid them if possible.
 
 They tend to form in **lines**; the submarine helpfully produces a list of nearby <span title="Maybe they're Bresenham vents.">lines of vents</span> (your puzzle input) for you to review. For example:
+
 ```
 0,9 -> 5,9
 8,0 -> 0,8
@@ -24,6 +25,7 @@ Each line of vents is given as a line segment in the format `x1,y1 -> x2,y2` whe
 For now, **only consider horizontal and vertical lines**: lines where either `x1 = x2` or `y1 = y2`.
 
 So, the horizontal and vertical lines from the above list would produce the following diagram:
+
 ```
 .......1..
 ..1....1..
@@ -53,6 +55,7 @@ Because of the limits of the hydrothermal vent mapping system, the lines in your
  - An entry like `9,7 -> 7,9` covers points `9,7`, `8,8`, and `7,9`.
 
 Considering all lines from the above example would now produce the following diagram:
+
 ```
 1.1....11.
 .111...2..

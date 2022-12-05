@@ -1,5 +1,5 @@
 from day import Day
-from input_parser import DummyParser
+from input_parser import InputParser
 from utils import prod
 
 class Day9(Day):
@@ -9,7 +9,24 @@ class Day9(Day):
 
     @property
     def input_parser(self):
-        return DummyParser()
+        return InputParser()
+
+    @property
+    def example_input(self):
+        return """2199943210
+3987894921
+9856789892
+8767896789
+9899965678"""
+
+    @property
+    def expected_results(self):
+        return {
+            "task1_example": 15,
+            "task1": 539,
+            "task2_example": 1134,
+            "task2": 736920
+        }
 
     def neighbours(self, x, y, width, height):
         neighbours = []

@@ -12,6 +12,29 @@ class Day3(Day):
     def input_parser(self):
         return ConvertToListParser()
 
+    @property
+    def example_input(self):
+        return """..##.......
+#...#...#..
+.#....#..#.
+..#.#...#.#
+.#...##..#.
+..#.##.....
+.#.#.#....#
+.#........#
+#.##...#...
+#...##....#
+.#..#...#.#"""
+
+    @property
+    def expected_results(self):
+        return {
+            "task1_example": 7,
+            "task1": 169,
+            "task2_example": 336,
+            "task2": 7560370818
+        }
+
     def task1(self, input):
         squares = 0
         trees = 0

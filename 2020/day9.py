@@ -13,6 +13,38 @@ class Day9(Day):
     def input_parser(self):
         return ConvertToIntParser()
 
+    @property
+    def example_input(self):
+        return """35
+20
+15
+25
+47
+40
+62
+55
+65
+95
+102
+117
+150
+182
+127
+219
+299
+277
+309
+576"""
+
+    @property
+    def expected_results(self):
+        return {
+            "task1_example": 127,
+            "task1": 29221323,
+            "task2_example": 62,
+            "task2": 4389369
+        }
+
     def task1(self, input):
         return self.find_invalid_number(input)
 

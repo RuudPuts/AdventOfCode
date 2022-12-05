@@ -12,6 +12,21 @@ class Day2(Day):
     def input_parser(self):
         return PasswordParser()
 
+    @property
+    def example_input(self):
+        return """1-3 a: abcde
+1-3 b: cdefg
+2-9 c: ccccccccc"""
+
+    @property
+    def expected_results(self):
+        return {
+            "task1_example": 2,
+            "task1": 614,
+            "task2_example": 1,
+            "task2": 354
+        }
+
     def task1(self, input):
         valid = []
         for entry in input:

@@ -1,5 +1,5 @@
 from day import Day
-from input_parser import DummyParser
+from input_parser import InputParser
 
 class Day3(Day):
     @property
@@ -8,7 +8,31 @@ class Day3(Day):
 
     @property
     def input_parser(self):
-        return DummyParser()
+        return InputParser()
+
+    @property
+    def example_input(self):
+        return """00100
+11110
+10110
+10111
+10101
+01111
+00111
+11100
+10000
+11001
+00010
+01010"""
+
+    @property
+    def expected_results(self):
+        return {
+            "task1_example": 198,
+            "task1": 4006064,
+            "task2_example": 230,
+            "task2": 5941884
+        }
 
     def task1(self, input):
         gamma = bin(int(self.most_common_bits(input), 2))

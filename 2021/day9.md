@@ -5,6 +5,7 @@ These caves seem to be <a href="https://en.wikipedia.org/wiki/Lava_tube" target=
 If you can model how the smoke flows through the caves, you might be able to avoid it and be that much safer. The submarine generates a heightmap of the floor of the nearby caves for you (your puzzle input).
 
 Smoke flows to the lowest point of the area it's in. For example, consider the following heightmap:
+
 ```
 2**1**9994321**0**
 3987894921
@@ -32,6 +33,7 @@ A **basin** is all locations that eventually flow downward to a single low point
 The **size** of a basin is the number of locations within the basin, including the low point. The example above has four basins.
 
 The top-left basin, size `3`:
+
 ```
 **21**99943210
 **3**987894921
@@ -41,6 +43,7 @@ The top-left basin, size `3`:
 ```
 
 The top-right basin, size `9`:
+
 ```
 21999**43210**
 398789**4**9**21**
@@ -50,6 +53,7 @@ The top-right basin, size `9`:
 ```
 
 The middle basin, size `14`:
+
 ```
 2199943210
 39**878**94921
@@ -59,6 +63,7 @@ The middle basin, size `14`:
 ```
 
 The bottom-right basin, size `9`:
+
 ```
 2199943210
 3987894921

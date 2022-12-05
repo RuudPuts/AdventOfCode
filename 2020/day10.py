@@ -12,6 +12,29 @@ class Day10(Day):
     def input_parser(self):
         return ConvertToIntParser()
 
+    @property
+    def example_input(self):
+        return """16
+10
+15
+5
+1
+11
+7
+19
+6
+12
+4"""
+
+    @property
+    def expected_results(self):
+        return {
+            "task1_example": 35,
+            "task1": 3000,
+            "task2_example": 8,
+            "task2": 193434623148032
+        }
+
     def task1(self, input):
         input = sorted(input)
         input.insert(0, 0)

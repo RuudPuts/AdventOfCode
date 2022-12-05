@@ -11,6 +11,38 @@ class Day13(Day):
     def input_parser(self):
         return InstructionsParser()
 
+    @property
+    def example_input(self):
+        return """6,10
+0,14
+9,10
+0,3
+10,4
+4,11
+6,0
+6,12
+4,1
+0,13
+10,12
+3,4
+3,0
+8,4
+1,10
+2,14
+8,10
+9,0
+fold along y=7
+fold along x=5"""
+
+    @property
+    def expected_results(self):
+        return {
+            "task1_example": 17,
+            "task1": 607,
+            "task2_example": -1,
+            "task2": "CPZLPFZL"
+        }
+
     def create_grid(self, input):
         max_x, max_y = 0, 0
         for i in [di for di in input if isinstance(di, DotInstruction)]:

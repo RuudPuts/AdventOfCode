@@ -11,6 +11,19 @@ class Day7(Day):
     def input_parser(self):
         return CommaSeparatedIntParser()
 
+    @property
+    def example_input(self):
+        return "16,1,2,0,4,2,7,1,2,14"
+
+    @property
+    def expected_results(self):
+        return {
+            "task1_example": 37,
+            "task1": 344735,
+            "task2_example": 168,
+            "task2": 96798233
+        }
+
     def task1(self, input):
         return self.calculate_alignment_cost(input, self.cost_to_move_part1)
 

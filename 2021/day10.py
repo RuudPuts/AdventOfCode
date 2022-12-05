@@ -12,6 +12,28 @@ class Day10(Day):
     def input_parser(self):
         return NavigationSubsystemParser()
 
+    @property
+    def example_input(self):
+        return """[({(<(())[]>[[{[]{<()<>>
+[(()[<>])]({[<{<<[]>>(
+{([(<{}[<>[]}>{[]{[(<()>
+(((({<>}<{<{<>}{[]{[]{}
+[[<[([]))<([[{}[[()]]]
+[{[{({}]{}}([{[{{{}}([]
+{<[[]]>}<{[{[{[]{()[[[]
+[<(<(<(<{}))><([]([]()
+<{([([[(<>()){}]>(<<{{
+<{([{{}}[<[[[<>{}]]]>[]]"""
+
+    @property
+    def expected_results(self):
+        return {
+            "task1_example": 26397,
+            "task1": 399153,
+            "task2_example": 288957,
+            "task2": 2995077699
+        }
+
     def task1(self, input):
         input = list(filter(lambda x: not x.valid, input))
 
