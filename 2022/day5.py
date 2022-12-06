@@ -31,7 +31,7 @@ move 1 from 1 to 2"""
             "task1_example": "CMZ",
             "task1": "SPFMVDTZT",
             "task2_example": "MCD",
-            "task2": -1
+            "task2": "ZFSJBPRFP"
         }
 
     def task1(self, input):
@@ -49,19 +49,12 @@ move 1 from 1 to 2"""
         stacks = input[0]
         moves = input[1]
 
-        print("aaa")
-        for s in stacks:
-            print(s)
-
         for move in moves:
-            print(f"move {move[0]} from {move[1]} to {move[2]}")
-
             stacks[move[2] - 1].extend(stacks[move[1] - 1][-move[0]:])
             stacks[move[1] - 1] = stacks[move[1] - 1][:-move[0]]
-            for s in stacks:
-                print(s)
 
         return ''.join(map(lambda x: x[-1], stacks))
+
 
 class CreateMoverParser(InputParser):
     def parse(self, input):
