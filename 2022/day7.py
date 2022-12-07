@@ -1,4 +1,3 @@
-from abc import ABC, abstractmethod
 from day import Day
 from input_parser import InputParser
 
@@ -92,7 +91,7 @@ $ ls
         return smallest_to_delete
 
 
-class TreeNode(ABC):
+class TreeNode():
     def __init__(self, title, parent=None):
         self.title = title
         self.parent = parent
