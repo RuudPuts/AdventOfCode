@@ -3,6 +3,8 @@ from dataclasses import dataclass
 import os
 import sys
 import time
+import traceback
+
 
 class Day(ABC):
     debug = False
@@ -90,6 +92,7 @@ class Day(ABC):
                     break
             except Exception as ex:
                 print(f"    ❌ Test '{test.description}' failed! Exception occurred {ex}'")
+                traceback.print_exc()
                 break
 
 
