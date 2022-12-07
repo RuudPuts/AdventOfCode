@@ -122,7 +122,6 @@ class TerminalParser(InputParser):
         listing_dir = False
 
         for line in input:
-            # print(f" > {line}")
             if line.startswith('$'):
                 listing_dir = False
 
@@ -133,30 +132,23 @@ class TerminalParser(InputParser):
                     param = line[5:]
                     if param == "/":
                         if result is None:
-                            # print("   Create root node")
                             result = DirNode(param)
-                        # print("   Activate root node")
                         current = result
                     elif param == "..":
-                        # print(f"   Change dir to parent '{current.parent.title}'")
                         current = current.parent
                     else:
-                        # print(f"   Change dir to '{param}'")
                         # Change dir?
                         children = list(filter(lambda x: x.title == param, current.subdirectories))
                         if len(children) > 0:
                             child = children[0]
-                            # print(f"   Reusing dir '{child.title}'")
                         else:
                             child = DirNode(param, current)
-                            # print(f"   Adding dir '{child.title}' to '{child.parent.title}'")
                             current.children.append(child)
                         current = child
             elif listing_dir:
                 if not line.startswith("dir"):
                     parts = line.split(" ") # size, filename
                     file = FileNode(parts[1], int(parts[0]), current)
-                    # print(f"   Adding file '{file.title}' size {file.size} to '{file.parent.title}'")
                     current.children.append(file)
 
         return result
