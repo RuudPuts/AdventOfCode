@@ -15,6 +15,32 @@ class Grid(Drawable):
     def __iter__(self):
         return iter(self.data)
 
+    def __getitem__(self, input):
+        if isinstance(input, tuple):
+            if isinstance(input[0], int):
+                xRange = range(input[0], input[0] + 1)
+            else:
+                xRange = input[0]
+
+            if isinstance(input[1], int):
+                yRange = range(input[1], input[1] + 1)
+            else:
+                yRange = input[1]
+
+            res = []
+            for y in yRange:
+                for x in xRange:
+                    res.append(self.get(Vector2(x, y)))
+
+            if isinstance(input[0], int) and isinstance(input[1], int):
+                if len(res) > 0:
+                    return res[0]
+                return None
+
+            return res
+
+        raise Exception(f"Expected a 'tuple' for subscript, got {type(input)}")
+
     @property
     def width(self):
         return len(self.data[0])
@@ -87,6 +113,18 @@ class Grid(Drawable):
 
     def neighbours6(self, point):
         return [p for p in point.adjacent6 if self.contains(p)]
+
+    def values_left(self, point):
+        return list(reversed(self[range(point.x), point.y]))
+
+    def values_top(self, point):
+        return list(reversed(self[point.x, range(point.y)]))
+
+    def values_right(self, point):
+        return self[range(point.x + 1, self.width), point.y]
+
+    def values_bottom(self, point):
+        return self[point.x, range(point.y + 1, self.height)]
 
     def ocr(self, fill_value):
         self.map(lambda _, value: value if value == fill_value else ' ')

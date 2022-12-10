@@ -25,7 +25,7 @@ def write_file(year, filename, content):
 
 def fetch_description(year, day):
     print("Fetching description")
-    return fetch_day(year, day)
+    return fetch_day(year, day).strip()
 
 
 def parse_description(description):
