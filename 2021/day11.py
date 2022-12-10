@@ -52,7 +52,7 @@ class Day11(Day):
             for point in to_flash:
                 flashed.append(point)
 
-                for n in grid.neighbours6(point):
+                for n in grid.neighbours8(point):
                     grid.set(n, grid.get(n) + 1)
 
             to_flash = self.points_to_flash(grid, flashed)

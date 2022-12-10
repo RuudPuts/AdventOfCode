@@ -38,7 +38,7 @@ class Vector2:
         ]
 
     @property
-    def adjacent6(self):
+    def adjacent8(self):
         return self.adjacent4 + [
             self.offset_by(-1, -1),
             self.offset_by(1, -1),

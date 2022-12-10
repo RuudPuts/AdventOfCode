@@ -111,8 +111,8 @@ class Grid(Drawable):
     def neighbours4(self, point):
         return [p for p in point.adjacent4 if self.contains(p)]
 
-    def neighbours6(self, point):
-        return [p for p in point.adjacent6 if self.contains(p)]
+    def neighbours8(self, point):
+        return [p for p in point.adjacent8 if self.contains(p)]
 
     def values_left(self, point):
         return list(reversed(self[range(point.x), point.y]))
