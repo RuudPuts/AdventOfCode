@@ -222,8 +222,6 @@ So, there are `**13**` positions the tail visited at least once.
 Simulate your complete hypothetical series of motions. **How many positions does the tail of the rope visit at least once?**
 
 Your puzzle answer was `6284`.
-<p class="day-success">The first half of this puzzle is complete! It provides one gold star: *
-
 ## Task 2
 A rope snaps! Suddenly, the river is getting a lot closer than you remember. The bridge is still there, but some of the ropes that broke are now whipping toward you as you fall through the air!
 
@@ -617,6 +615,9 @@ Now, the tail (`9`) visits `**36**` positions (including `s`) at least once:
 
 Simulate your complete series of motions on a larger rope with ten knots. **How many positions does the tail of the rope visit at least once?**
 
-<form method="post" action="9/answer"><input type="hidden" name="level" value="2"/>
-Answer: <input type="text" name="answer" autocomplete="off"/> <input type="submit" value="[Submit]"/>
-</form>
+Your puzzle answer was `2661`.
+<p class="day-success">Both parts of this puzzle are complete! They provide two gold stars: **
+
+At this point, you should <a href="/2022">return to your Advent calendar</a> and try another puzzle.
+
+If you still want to see it, you can <a href="9/input" target="_blank">get your puzzle input</a>.
