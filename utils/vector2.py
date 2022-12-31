@@ -1,3 +1,5 @@
+import math
+
 class Vector2:
     def __init__(self, x, y):
         self.x = x
@@ -11,6 +13,9 @@ class Vector2:
             return self.x == other.x and self.y == other.y
 
         return False
+
+    def __lt__(self, other):
+        return self.tuple < other.tuple
 
     def __hash__(self):
         return hash((self.x, self.y))
@@ -27,6 +32,11 @@ class Vector2:
 
     def offset_by(self, x, y):
         return Vector2(self.x + x, self.y + y)
+
+    def distance_to(self, other):
+        dx = abs(self.x - other.x)
+        dy = abs(self.y - other.y)
+        return math.sqrt(dx * 2 + dy * 2)
 
     @property
     def adjacent4(self):
