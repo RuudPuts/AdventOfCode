@@ -13,7 +13,7 @@ SESSION = 'AOC_SESSION_COOKIE'
 def fetch_day(year, day, path_suffix=''):
     print("Fetching %s day %s %s" % (year, day, path_suffix))
     url = "https://adventofcode.com/%s/day/%s%s" % (year, day, path_suffix)
-    return requests.get(url, headers={'Cookie': "session=%s" % SESSION, 'User-Agent': "https://github.com/RuudPuts/AdventOfCode by ruud.puts@gmail.com"}).text.strip()
+    return requests.get(url, headers={'Cookie': "session=%s" % SESSION, 'User-Agent': "https://github.com/RuudPuts/AdventOfCode by ruud.puts@gmail.com"}).text
 
 
 def write_file(year, filename, content):
@@ -29,7 +29,11 @@ def fetch_description(year, day):
 
 
 def parse_description(description):
-    description = description.split("<main>")[1].split("</main>")[0].split('To begin, <a href="')[0].split('Although it hasn\'t changed')[0].split('You can also <span class="share">[Share<span class="share-content">on')[0]
+    description = description.split("<main>")[1]
+    description = description.split("</main>")[0]
+    description = description.split('To begin, <a href="')[0]
+    description = description.split('Although it hasn\'t changed')[0]
+    description = description.split('You can also <span class="share">[Share<span class="share-content">on')[0]
 
     remove_regexes = [
         r"<script>.*?<\/script>",
