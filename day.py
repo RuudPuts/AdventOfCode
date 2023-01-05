@@ -119,9 +119,8 @@ class Day(ABC):
     def read_input(self):
         path = sys.modules[self.__module__].__file__.replace(".py", "-input.txt")
 
-        file = open(path, 'r')
-        input = file.read().splitlines()
-        file.close()
+        with open(path, 'r', encoding="UTF8") as file:
+            input = file.read().splitlines()
 
         return input
 
