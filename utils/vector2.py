@@ -30,13 +30,33 @@ class Vector2:
             self.y * scale
         )
 
-    def offset_by(self, x, y):
+    def offset_by(self, x=0, y=0):
         return Vector2(self.x + x, self.y + y)
 
     def distance_to(self, other):
         dx = abs(self.x - other.x)
         dy = abs(self.y - other.y)
         return math.sqrt(dx * 2 + dy * 2)
+
+    def line_to(self, other):
+        dx = abs(self.x - other.x)
+        dy = abs(self.y - other.y)
+        if dx > 0 and dy > 0:
+            raise Exception("Diagonals not supported!")
+
+        if dx > 0:
+            source = self
+            if other.x < source.x:
+                source = other
+
+            return list(map(lambda x: source.offset_by(x=x), range(dx + 1)))
+        if dy > 0:
+            source = self
+            if other.y < source.y:
+                source = other
+
+            return list(map(lambda y: source.offset_by(y=y), range(dy + 1)))
+
 
     @property
     def adjacent4(self):
