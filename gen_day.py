@@ -7,7 +7,7 @@ import requests
 from jinja2 import Environment, FileSystemLoader
 
 
-SESSION = 'AOC_SESSION_COOKIE'
+SESSION = '53616c7465645f5f3609a8df5f659794732d690a36c61376a68543121f6c21fde634f0b82662c7ab44f6063ee93ef0294bf2b20e1fde49f221fa4c75864a6685'
 
 
 def fetch_day(year, day, path_suffix=''):
@@ -121,6 +121,12 @@ if __name__ == "__main__":
         write_file(year, "day%s.py" % day, script)
 
     year_init_file = "./%s/__init__.py" % year
+
+    if not os.path.isfile(year_init_file):
+        print("Creating %s __init__.py" % (year))
+        with open(year_init_file, "w+") as file:
+            file.write("")
+
     year_init_data = open(year_init_file).read().splitlines()
     day_import_line = "from .day%s import Day%s" % (day, day)
     if day_import_line not in year_init_data:
