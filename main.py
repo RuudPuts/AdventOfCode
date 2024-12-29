@@ -6,7 +6,9 @@ import os
 import re
 import sys
 import time
+import argparse
 
+from file_change_observer import FileChangeObserver
 
 def list_years():
     regex = re.compile(r"20[1|2]\d")
@@ -21,6 +23,14 @@ def list_days(year_module):
             days.append(obj)
 
     return sorted(days, key=lambda x: int(str(x).split('.')[-2][3:]))
+
+def find_day_class(year: int, day: int):
+    year_module = importlib.import_module(str(year))
+    for day_class in list_days(year_module):
+        if str(day_class).endswith(f"Day{day}'>"):
+            return day_class
+
+    return None
 
 
 def run_day(day_class):
@@ -46,30 +56,73 @@ def run_day(day_class):
     # print(f"  Task 2: {task2_result} (took {task2_duration * 1000:0.4f}ms)")
 
 
+# Define a CLI argument parser. The first argumnet is a command to run. Either 'run' or 'observe'.
+# The second argument is the year to run. The third argument is the day to run.
+# If the command is 'observe', the year and day arguments are required.
+# If the command is 'run', the year and day arugments are optional.
+
+
+
+
 if __name__ == "__main__":
-    if len(sys.argv) == 3:
-        year = sys.argv[1]
-        day = sys.argv[2]
+    def parse_arguments():
+        parser = argparse.ArgumentParser(description='Advent of Code CLI')
+        parser.add_argument('command', choices=['run', 'observe'], help='Command to run')
+        parser.add_argument('year', nargs='?', type=int, help='Year to run')
+        parser.add_argument('day', nargs='?', type=int, help='Day to run')
 
-        print("Advent of Code " + year)
+        args = parser.parse_args()
 
-        year_module = importlib.import_module(year)
-        for day_class in list_days(year_module):
-            if str(day_class).endswith(f"Day{day}'>"):
-                run_day(day_class)
+        if args.command == 'observe':
+            if args.year is None or args.day is None:
+                parser.error("The 'observe' command requires both year and day arguments.")
+        return args
+
+    args = parse_arguments()
+    print(f"Command: {args.command}, Year: {args.year}, Day: {args.day}")
+
+    year = args.year
+    day = args.day
+
+    if args.command == 'observe':
+        print("Advent of Code " + str(year))
+
+        file_to_monitor = f"{year}/day{day}.py"
+
+        def on_day_file_change():
+            os.system('cls' if os.name == 'nt' else 'clear')
+            run_day(find_day_class(year, day))
+
+        observer = FileChangeObserver(file_to_monitor, lambda: on_day_file_change)
+        observer.start()
+
+        run_day(find_day_class(year, day))
+        try:
+        # Keep the program running to monitor changes
+            while True:
+                time.sleep(1)
+        except KeyboardInterrupt:
+            # Stop monitoring on user interrupt
+            observer.stop()
     else:
-        years = list_years()
+        if year and day:
+            run_day(find_day_class(year, day))
+        else:
+            if year:
+                years = [year]
+            else:
+                years = list_years()
 
-        for year in years:
-            print()
-            print("Advent of Code " + year)
+            for year in years:
+                print()
+                print("Advent of Code " + year)
 
-            year_module = importlib.import_module(year)
+                year_module = importlib.import_module(year)
 
-            for day_class in list_days(year_module):
-                print("")
+                for day_class in list_days(year_module):
+                    print("")
 
-                run_day(day_class)
+                    run_day(day_class)
 
-            print()
-            print()
+                print()
+                print()
