@@ -4,7 +4,7 @@ from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 import time
 import os
-from os import system
+import re
 
 class FileChangeHandler(FileSystemEventHandler):
     def __init__(self, file_to_watch, callback):
@@ -13,10 +13,16 @@ class FileChangeHandler(FileSystemEventHandler):
 
     def on_modified(self, event):
         print(f"Detected change in: {event.src_path}")  # Debugging log
-        if os.path.abspath(event.src_path) == self.file_to_watch:
-            print(f"File {self.file_to_watch} has been modified!")
+
+        absolute_file_path = os.path.abspath(event.src_path)
+        # if os.path.abspath(event.src_path) == self.file_to_watch:
+
+        regex = re.compile(r".*?\/(\d+)\/day(\d+).py")
+        match = regex.match(absolute_file_path)
+        if regex.match(absolute_file_path):
+            print(f"File {absolute_file_path} has been modified!")
             if self.callback:
-                self.callback()
+                self.callback(*match.groups())
 
 class FileChangeObserver:
     def __init__(self, file_path, on_change_callback):
@@ -43,20 +49,20 @@ if __name__ == "__main__":
         print("Usage: python observer.py <year> <day>")
         sys.exit(1)
 
+    # Define a callback function
+    def on_file_change(year, day):
+        print("🔥 File change detected!")
+        os.system(f'python main.py run {year} {day}')
+
     year = sys.argv[1]
     day = sys.argv[2]
 
     file_to_monitor = f"{year}/day{day}.py"  # Replace with your file path
 
-    # Define a callback function
-    def on_file_change():
-        print("🔥 File change detected!")
-        system(f'python main.py run {year} {day}')
-
     # Create and start the observer
     observer = FileChangeObserver(file_to_monitor, on_file_change)
     observer.start()
-    on_file_change()
+    on_file_change(year, day)
 
     try:
         # Keep the program running to monitor changes
