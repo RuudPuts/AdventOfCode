@@ -3,4 +3,4 @@ from .convert_to_list_parser import ConvertToListParser
 from .comma_separated_int_parser import CommaSeparatedIntParser
 from .input_parser import InputParser
 from .split_blank_line_parser import SplitBlankLineParser
-from .int_grid_parser import IntGridParser
+from .grid_parser import GridParser, IntGridParser

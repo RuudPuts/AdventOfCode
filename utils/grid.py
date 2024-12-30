@@ -54,7 +54,9 @@ class Grid(Drawable):
         return self.width * self.height
 
     def get(self, point):
-        return self.data[point.y][point.x]
+        if self.contains(point):
+            return self.data[point.y][point.x]
+        return None
 
     def set(self, point, value):
         self.data[point.y][point.x] = value
@@ -110,9 +112,24 @@ class Grid(Drawable):
 
     def neighbours4(self, point):
         return [p for p in point.adjacent4 if self.contains(p)]
+    
+    def neighbours4diag(self, point):
+        return [p for p in point.adjacent4diag if self.contains(p)]
 
     def neighbours8(self, point):
         return [p for p in point.adjacent8 if self.contains(p)]
+    
+    def lines8(self, point, length):
+        return list({
+            "right": [point.offset_by(i, 0) for i in range(1, length + 1)],
+            "bottom right": [point.offset_by(i, i) for i in range(1, length + 1)],
+            "bottom": [point.offset_by(0, i) for i in range(1, length + 1)],
+            "bottom left": [point.offset_by(-i, i) for i in range(1, length + 1)],
+            "left": [point.offset_by(-i, 0) for i in range(1, length + 1)],
+            "top left": [point.offset_by(-i, -i) for i in range(1, length + 1)],
+            "top": [point.offset_by(0, -i) for i in range(1, length + 1)],
+            "top right": [point.offset_by(i, -i) for i in range(1, length + 1)],
+        }.values())
 
     def values_left(self, point):
         return list(reversed(self[range(point.x), point.y]))

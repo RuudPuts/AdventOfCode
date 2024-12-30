@@ -66,6 +66,15 @@ class Vector2:
             self.offset_by(1, 0),
             self.offset_by(0, 1)
         ]
+    
+    @property
+    def adjacent4diag(self):
+        return [
+            self.offset_by(-1, -1),
+            self.offset_by(1, -1),
+            self.offset_by(1, 1),
+            self.offset_by(-1, 1)
+        ]
 
     @property
     def adjacent8(self):
